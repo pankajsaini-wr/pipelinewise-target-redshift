@@ -436,7 +436,7 @@ class DbSync:
                     aws_secret_access_key=self.connection_config['aws_secret_access_key'],
                     aws_session_token="SESSION_TOKEN '{}'".format(self.connection_config['aws_session_token']) if self.connection_config.get('aws_session_token') else '',
                 )
-                self.logger.info(f"copy_credentials= {self.copy_credentials}")
+                self.logger.info(f"copy_credentials= {copy_credentials}")
 
                 # Step 3: Generate copy options - Override defaults from config.json if defined
                 copy_options = self.connection_config.get('copy_options',"""
@@ -466,7 +466,7 @@ class DbSync:
                     copy_options=copy_options,
                     compression_option=compression_option
                 )
-                self.logger.info(f"copy_sql= {self.copy_sql}")
+                self.logger.info(f"copy_sql= {copy_sql}")
                 self.logger.debug("Running query: {}".format(copy_sql))
                 cur.execute(copy_sql)
 
